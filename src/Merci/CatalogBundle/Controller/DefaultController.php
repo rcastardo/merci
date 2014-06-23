@@ -10,4 +10,9 @@ class DefaultController extends Controller
     {
         return $this->render('MerciCatalogBundle:Default:index.html.twig');
     }
+
+    public function productAction()
+    {
+        return $this->render('MerciCatalogBundle:Default:product.html.twig');
+    }
 }
