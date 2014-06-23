@@ -1,0 +1,4 @@
+merci_catalog:
+    resource: "@MerciCatalogBundle/Resources/config/routing.yml"
+    prefix:   /
+
