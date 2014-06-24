@@ -7,3 +7,7 @@ product:
   defaults: { _controller: MerciCatalogBundle:Default:product }
   requirements:
     id: \d+
+
+search:
+    pattern: /search
+    defaults: { _controller: MerciCatalogBundle:Default:search }
