@@ -3,5 +3,7 @@ homepage:
     defaults: { _controller: MerciCatalogBundle:Default:index }
 
 product:
-  pattern: /product
+  pattern: /product/{id}
   defaults: { _controller: MerciCatalogBundle:Default:product }
+  requirements:
+    id: \d+

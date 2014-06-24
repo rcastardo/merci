@@ -1,6 +1,6 @@
 Merci\CatalogBundle\Entity\Product:
     type: entity
-    table: null
+    table: Product
     repositoryClass: Merci\CatalogBundle\Entity\ProductRepository
     id:
         id:
@@ -17,8 +17,8 @@ Merci\CatalogBundle\Entity\Product:
         price:
             type: decimal
             scale: 2
-        imagemPath:
+        imagePath:
             type: string
             length: '255'
-            column: imagem_path
+            column: image_path
     lifecycleCallbacks: {  }

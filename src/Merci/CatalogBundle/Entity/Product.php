@@ -32,7 +32,7 @@ class Product
     /**
      * @var string
      */
-    private $imagemPath;
+    private $imagePath;
 
 
     /**
@@ -120,9 +120,9 @@ class Product
      * @param string $imagemPath
      * @return Product
      */
-    public function setImagemPath($imagemPath)
+    public function setImagePath($imagePath)
     {
-        $this->imagemPath = $imagemPath;
+        $this->imagePath = $imagePath;
 
         return $this;
     }
@@ -132,8 +132,8 @@ class Product
      *
      * @return string 
      */
-    public function getImagemPath()
+    public function getImagePath()
     {
-        return $this->imagemPath;
+        return $this->imagePath;
     }
 }
