@@ -1,0 +1,24 @@
+Merci\CatalogBundle\Entity\Product:
+    type: entity
+    table: null
+    repositoryClass: Merci\CatalogBundle\Entity\ProductRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: '100'
+        description:
+            type: text
+        price:
+            type: decimal
+            scale: 2
+        imagemPath:
+            type: string
+            length: '255'
+            column: imagem_path
+    lifecycleCallbacks: {  }
