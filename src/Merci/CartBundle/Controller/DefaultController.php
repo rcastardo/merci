@@ -10,4 +10,19 @@ class DefaultController extends Controller
     {
         return $this->render('CartBundle:Default:index.html.twig');
     }
+
+    public function addAction($id)
+    {
+        return $this->render('MerciCartBundle:Default:index.html.twig');
+    }
+
+    public function deleteAction($id)
+    {
+        return $this->render('MerciCartBundle:Default:index.html.twig');
+    }
+
+    public function updateAction()
+    {
+        return $this->render('MarciCartBundle:Default:index.html.twig');
+    }
 }
