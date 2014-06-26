@@ -1,0 +1,3 @@
+checkout:
+    pattern:  /
+    defaults: { _controller: MerciCheckoutBundle:Default:index }

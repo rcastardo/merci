@@ -1,0 +1,7 @@
+parameters:
+#    merci_checkout.example.class: Merci\CheckoutBundle\Example
+
+services:
+#    merci_checkout.example:
+#        class: %merci_checkout.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

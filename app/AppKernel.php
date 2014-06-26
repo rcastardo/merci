@@ -18,6 +18,8 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new Merci\CatalogBundle\MerciCatalogBundle(),
             new Merci\CartBundle\MerciCartBundle(),
+            new Merci\UserBundle\MerciUserBundle(),
+            new Merci\CheckoutBundle\MerciCheckoutBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

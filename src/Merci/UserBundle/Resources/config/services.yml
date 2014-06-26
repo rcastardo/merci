@@ -1,0 +1,7 @@
+parameters:
+#    merci_user.example.class: Merci\UserBundle\Example
+
+services:
+#    merci_user.example:
+#        class: %merci_user.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
