@@ -9,7 +9,21 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('MerciCartBundle:Default:index.html.twig');
+        $content = 'MerciCartBundle:Default:index.html.twig';
+        $session = $this->get('session');
+        $cart = $session->get('cart');
+        if (!$cart || $cart->count() == 0) {
+            $content = 'MerciCartBundle:Default:empty.html.twig';
+        }
+        return $this->render($content);
+    }
+
+    protected function redirectAndNotify($message = null)
+    {
+        if($message) {
+            $this->get('session')->getFlashBag()->add('notice', $message);
+        }
+        return $this->redirect($this->generateUrl('cart'));
     }
 
     public function addAction($id)
@@ -32,11 +46,41 @@ class DefaultController extends Controller
 
     public function deleteAction($id)
     {
-        return $this->render('MerciCartBundle:Default:index.html.twig');
+        $product = $this->getDoctrine()
+            ->getRepository('MerciCatalogBundle:Product')
+            ->findOneById($id);
+        if (!$product) {
+            return $this->redirectAndNotify();
+        }
+        $session = $this->get('session');
+        $cart = $session->get('cart');
+        if ($cart && $cart->count() > 0) {
+            $cart->delete($product);
+            $session->set('cart', $cart);
+        }
+        return $this->redirect($this->generateUrl('cart'));
     }
 
     public function updateAction()
     {
-        return $this->render('MarciCartBundle:Default:index.html.twig');
+        $request = $this->getRequest();
+        $id = $request->query->get('id');
+        $quantity = $request->query->get('quantity');
+        if (!$id || !$quantity) {
+            return $this->redirectAndNotify('Não foi possível atualizar o carrinho');
+        }
+        $product = $this->getDoctrine()
+            ->getRepository('MerciCatalogBundle:Product')
+            ->findOneById($id);
+        if (!$product) {
+            return $this->redirectAndNotify('Produto não existe');
+        }
+        $session = $this->get('session');
+        $cart = $session->get('cart');
+        if ($cart && $cart->count() > 0) {
+            $cart->update($product, $quantity);
+            $session->set('cart', $cart);
+        }
+        return $this->redirect($this->generateUrl('cart'));
     }
 }
