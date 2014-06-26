@@ -17,7 +17,7 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new Merci\CatalogBundle\MerciCatalogBundle(),
-            new Merci\CartBundle\CartBundle(),
+            new Merci\CartBundle\MerciCartBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

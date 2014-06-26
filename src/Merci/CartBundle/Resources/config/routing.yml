@@ -1,6 +1,6 @@
 cart:
     pattern:  /
-    defaults: { _controller: CartBundle:Default:index }
+    defaults: { _controller: MerciCartBundle:Default:index }
 
 cart_add:
     pattern: /add/{id}

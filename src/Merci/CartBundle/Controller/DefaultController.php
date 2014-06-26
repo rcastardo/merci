@@ -8,7 +8,7 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('CartBundle:Default:index.html.twig');
+        return $this->render('MerciCartBundle:Default:index.html.twig');
     }
 
     public function addAction($id)

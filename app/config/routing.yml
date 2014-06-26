@@ -1,5 +1,5 @@
 cart:
-    resource: "@CartBundle/Resources/config/routing.yml"
+    resource: "@MerciCartBundle/Resources/config/routing.yml"
     prefix:   /cart
 
 merci_catalog:
