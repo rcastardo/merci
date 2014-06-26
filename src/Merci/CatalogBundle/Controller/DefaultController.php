@@ -54,7 +54,10 @@ class DefaultController extends Controller
         ')->setParameter('find', '%' . $find . '%');
         $products = $query->getResult();
         if (empty($products)) {
-            throw $this->createNotFoundException('No products avaiable');
+            $this->get('session')->getFlashBag()->add(
+                'notice', 'Nenhum resultado encontrado para pesquisa: ' . $find
+            );
+            return $this->redirect($this->generateUrl('homepage'));
         }
         return $this->render('MerciCatalogBundle:Default:index.html.twig',
             array('products' => $products, 'find' => $find)
