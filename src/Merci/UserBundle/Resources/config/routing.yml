@@ -11,3 +11,7 @@ logout:
 register:
     pattern: /register
     defaults: { _controller: MerciUserBundle:Default:register }
+
+account:
+    pattern: /account
+    defaults: { _controller: MerciUserBundle:Default:account }
