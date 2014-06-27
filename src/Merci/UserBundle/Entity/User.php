@@ -2,12 +2,15 @@
 
 namespace Merci\UserBundle\Entity;
 
+//use Doctrine\ORM\Mapping as ORM;
+//use Symfony\Component\Validator\Constraints as Assert;
+//use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * User
  */
-class User
+class User implements UserInterface, \Serializable
 {
     /**
      * @var integer
@@ -29,6 +32,20 @@ class User
      */
     private $password;
 
+    /**
+     * @var string
+     */
+    private $salt;
+
+    /**
+     * @var \Merci\UserBundle\Entity\Address
+     */
+    protected $address;
+
+    public function __construct()
+    {
+        $this->salt = md5(uniqid(null, true));
+    }
 
     /**
      * Get id
@@ -108,11 +125,6 @@ class User
     {
         return $this->password;
     }
-    /**
-     * @var \Merci\UserBundle\Entity\Address
-     */
-    private $address;
-
 
     /**
      * Set address
@@ -135,5 +147,54 @@ class User
     public function getAddress()
     {
         return $this->address;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getUsername()
+    {
+        return $this->getEmail();
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getSalt()
+    {
+        return $this->salt;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getRoles()
+    {
+        return array('ROLE_USER');
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function eraseCredentials() {}
+
+    /**
+     * @see \Serializable::serialize()
+     */
+    public function serialize()
+    {
+        return serialize(array(
+            $this->id
+        ));
+    }
+
+    /**
+     * @see \Serializable::unserialize()
+     */
+    public function unserialize($serialized)
+    {
+        list (
+            $this->id,
+            ) = unserialize($serialized);
     }
 }

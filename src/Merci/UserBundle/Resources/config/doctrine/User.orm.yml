@@ -18,11 +18,15 @@ Merci\UserBundle\Entity\User:
         password:
             type: string
             length: '40'
+        salt:
+            type: string
+            length: 32
     manyToOne:
         address:
             targetEntity: Address
             inversedBy: users
             cascade: ["persist"]
+    #para varios campos utilizar joinColumns no mesmo nivel do relacionamento
     joinColumn:
             name: address_id
             referencedColumnName: id

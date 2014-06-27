@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Security\Core\SecurityContext;
 use Merci\UserBundle\Entity\User;
 use Merci\UserBundle\Form\UserType;
+use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 
 class DefaultController extends Controller
 {
@@ -47,9 +48,18 @@ class DefaultController extends Controller
 
         $form->handleRequest($request);
         if ($form->isValid()) {
+            $factory = $this->get('security.encoder_factory');
+            $encoder = $factory->getEncoder($user);
+            $password = $encoder->encodePassword($user->getPassword(), $user->getSalt());
+            $user->setPassword($password);
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
+
+            //automatic login user
+            $providerKey = 'secured_area'; //Name of firewall
+            $token = new UsernamePasswordToken($user, null, $providerKey, array('AUTO_LOGIN'));
+            $this->container->get('security.context')->setToken($token);
 
             return $this->redirect($this->generateUrl('checkout'));
         }
