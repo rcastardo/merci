@@ -34,7 +34,6 @@ class Product
      */
     private $imagePath;
 
-
     /**
      * Get id
      *
