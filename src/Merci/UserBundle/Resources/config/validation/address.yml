@@ -1,0 +1,35 @@
+Merci\UserBundle\Entity\Address:
+    properties:
+        street:
+            - NotBlank:
+                message: 'nao pode ser nulo'
+            - Length:
+                min: 2
+                minMessage: "Your street must be at least {{ limit }} characters length"
+                max: 255
+                maxMessage: "Your street cannot be longer than {{ limit }} characters"
+        number:
+           - NotBlank:
+               message: 'nao pode ser null'
+           - Length:
+               min: 2
+               minMessage: "Your number must be at least {{ limit }} characters length"
+               max: 255
+               maxMessage: "You number cannot be longer than {{ limit }} characters length"
+        postalCode:
+            - NotBlank:
+                message: 'nao pode ser null'
+            - Length:
+                min: 8
+                minMessage: "Your postal code must be at least {{ limit }} characters length"
+                max: 20
+                maxMessage: "You postal code cannot be longer than {{ limit }} characters length"
+        city:
+            - NotBlank:
+                message: 'nao pode ser null'
+            - Length:
+                min: 2
+                minMessage: "Your city must be at least {{ limit }} characters length"
+                max: 100
+                maxMessage: "You city cannot be longer than {{ limit }} characters length"
+

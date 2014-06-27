@@ -1,0 +1,28 @@
+Merci\UserBundle\Entity\User:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+            fields: [email]
+            errorPath: email
+            message: 'email cadastrado'
+    properties:
+        name:
+            - NotBlank:
+                message: 'nao pode ser nulo'
+            - Length:
+                min: 2
+                minMessage: "Your name must be at least {{ limit }} characters length"
+                max: 255
+                maxMessage: "Your name cannot be longer than {{ limit }} characters"
+        email:
+            # - equal Assert
+            - Email:
+                message: "The email '{{ value }}' is not a valid email."
+                checkMX: false
+        password:
+            - NotBlank:
+                message: 'nao pode ser null'
+            - Length:
+                min: 2
+                minMessage: "Your password must be at least {{ limit }} characters length"
+                max: 100
+                maxMessage: "You password cannot be longer than {{ limit }} characters length"

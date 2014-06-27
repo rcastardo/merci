@@ -1,0 +1,29 @@
+Merci\UserBundle\Entity\User:
+    type: entity
+    table: User
+    repositoryClass: Merci\UserBundle\Entity\UserRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+        email:
+            type: string
+            length: 255
+        password:
+            type: string
+            length: '40'
+    manyToOne:
+        address:
+            targetEntity: Address
+            inversedBy: users
+            cascade: ["persist"]
+    joinColumn:
+            name: address_id
+            referencedColumnName: id
+    lifecycleCallbacks: {  }

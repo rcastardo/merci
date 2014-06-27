@@ -1,0 +1,27 @@
+Merci\UserBundle\Entity\Address:
+    type: entity
+    table: Address
+    repositoryClass: Merci\UserBundle\Entity\AddressRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        street:
+            type: string
+            length: 255
+        number:
+            type: integer
+        postalCode:
+            type: string
+            length: '20'
+            column: postal_code
+        city:
+            type: string
+            length: '100'
+        state:
+            type: string
+            length: '100'
+    lifecycleCallbacks: {  }
