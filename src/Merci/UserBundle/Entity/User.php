@@ -2,6 +2,7 @@
 
 namespace Merci\UserBundle\Entity;
 
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * User
